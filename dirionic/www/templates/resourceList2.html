@@ -1,14 +1,4 @@
-<!-- <ion-view view-title="Resources">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="resource  in resources" href="#/app/resouces/{{resource.id}}">
-        {{resource.title}}
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-view> -->
-
-<ion-view  title="Resources">   
+<ion-view view-title="Resources" ng-controller="resourceListCtrl as vm">
 <div class="tabs-top tabs-background-stable tabs-color-calm">
     <div class="tabs tabs-icon-left">
         <a class="tab-item" href="#">
@@ -36,30 +26,16 @@
             Innovation
         </a>
     </div>
-    <ion-content> 
-
-    <div>hello</div>
-    <h1>hello2</h1> 
-
-     <ion-list>
-      <ion-item ng-repeat="resource  in resources" href="#/app/resouces/{{resource.id}}">
-        {{resource.title}}
-      </ion-item>
-    </ion-list>
-
-   <!-- 
-    <ion-list>
-      <ion-item>
-       hello
-      </ion-item>
-      <ion-item>
-       hello2
-      </ion-item>
-    </ion-list> -->
-</ion-content>
-
-    </ion-view>
-
-
-
-
+    <ion-content class="has-header">
+      <div class="list">
+        <a class="item item-icon-right" ng-repeat="resource in vm.resources"
+          ng-click="vm.selectResource(resource.id)">
+            <p>{{resource.id}}</p>
+            <p>{{resource.title}}</p>
+            <img ng-src="{{resource.resourcefile}}">
+            <p>{{resource.summary}}</p>
+             <p>{{resource.tags}}</p>
+             <p>{{resource.downloads}}</p>
+            <i class="icon ion-chevron-right icon-access"></i>
+    </ion-content>
+  </ion-view>

@@ -82,12 +82,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('app.resourcelist', {
+  .state('app.resourcelist2', {
+    url: '/resources2',
+    views: {
+      'resources2': {
+        templateUrl: 'templates/resourceList2.html',
+         controller: 'resourceListCtrl'
+      }
+    }
+  })
+
+  //  .state('app.resourcelist2', {
+  //   url: '/resources2',
+  //   views: {
+  //     'resources2': {
+  //       templateUrl: 'templates/resourceList2.html',
+  //        controller: 'ArticlesCtrl'
+  //     }
+  //   }
+  // })
+
+   .state('app.resourcelist', {
     url: '/resources',
     views: {
       'resources': {
         templateUrl: 'templates/resourcelist.html',
-        controller: 'ResourceListCtrl'
+         controller: 'ResourceListCtrl'
       }
     }
   })
@@ -97,7 +117,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'resources': {
         templateUrl: 'templates/resource.html',
-        controller: 'ResourceCtrl'
+         controller: 'ResourceCtrl'
       }
     }
   })

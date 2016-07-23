@@ -140,32 +140,50 @@ angular.module('starter.controllers', [])
 }])
 
 .controller("ResourceListCtrl", ["$scope", "$ionicLoading", "ResourceListSvc", function($scope, $ionicLoading, ResourceListSvc) {
-    $ionicLoading.show({template: "Loading videos..."});
+ $ionicLoading.show({template: "Loading articles..."});
 
     $scope.resources = [];
     $scope.$on("resourcelist", function(_, data) {
 
         data.forEach(function(resource) {
             $scope.resources.push({
-                //json data
+                id: resource.id,
+                title: resource.title,
+                resourcefile: resource.resourcefile,
+                filetype: resource.filetype,
+                summary: resource.summary,
+                poster: getname(resource.poster),
+                views: resource.views,
+                downloads: resource.downloads,
+                tags: resource.tags,
+                dt_created: resource.dt_created
             });
         });
-        
+
         $ionicLoading.hide();
     });
     
-    ResourceListSvc.loadResources();
+    ArticleListSvc.loadArticles();
 }])
 
+
 .controller("ResourceCtrl", ["$scope", "$stateParams", "ResourceSvc", function($scope, $stateParams, ResourceSvc) {
-    $scope.resource = null;
+  $scope.resource = null;
     $scope.$on("resource", function(_, data) {
         $scope.resource = {
-            //json data
+            id: data.id,
+            title: data.title,
+            resourcefile: data.resourcefile,
+                    summary: data.summary,
+                    poster: getname(data.poster),
+                    views: data.views,
+                    downloads: data.downloads,
+                    tags: data.tags,
+                    dt_created: data.dt_created
         };
     });
     
-    ResourceSvc.loadResource($stateParams.id);
+   ResourceSvc.loadResource($stateParams.id);
 }])
 
 .controller("UserListCtrl", ["$scope", "$ionicLoading", "UserListSvc", function($scope, $ionicLoading, UserListSvc) {
